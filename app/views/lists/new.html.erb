@@ -1,0 +1,24 @@
+<h1>新規投稿</h1>
+<!--バリデーションチェック結果部分-->
+<% if @list.errors.any? %>　<!--.errors.any?の組み合わせでエラーが発生しているかどうかを判定-->
+  <%= @list.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @list.errors.full_messages.each do |message| %>　<!--full_messagesはエラーの内容出力-->
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<!--form_with部分-->
+<%= form_with model: @list, url: '/lists', method: :post do |f| %> <!--@listはインスタンス変数-->
+  <h4>タイトル</h4>
+  <%= f.text_field :title %> <!--text_field＝単一行のテキストフィールド-->
+
+  <h4>本文</h4>
+  <%= f.text_area :body %>　<!--text_area＝複数行のテキストフィールド-->
+
+  <h4>画像</h4>
+  <%= f.file_field :image, accept:"image/*" %> <!--ファイルの投稿をするためのフィールド。画像ファイル以外の全てのファイル(音声ファイルや動画ファイルなど)も投稿できる-->
+　<!--今回は、accept: "image/*"を使い、画像ファイルしか投稿できないように制限をかける-->
+  <%= f.submit '投稿' %> <!--submit＝送信ボタン-->
+<% end %>

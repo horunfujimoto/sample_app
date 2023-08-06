@@ -1,0 +1,12 @@
+<h2>タイトル</h2>
+<p><%= @list.title %></p> <!--@listにはURLによって異なるレコードが入る-->
+
+<h2>本文</h2>
+<p><%= @list.body %></p>
+
+<P>画像</P>
+<!--もともとあった.attached?メソッドは削除済-->
+<%= image_tag @list.image, size: "300x300" %>
+
+<%= link_to "編集", edit_list_path(@list.id) %>
+<%= link_to "削除", list_path(@list.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>

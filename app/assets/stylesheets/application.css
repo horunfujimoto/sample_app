@@ -13,3 +13,106 @@
  *= require_tree .
  *= require_self
  */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header, h1, nav, .list-comment{
+  font-family: 'Kaushan', cursive, sans-serif;
+}
+
+header {
+  width: 90%;
+  padding: 15px 0;
+  margin: 30px auto 0;
+  text-align: center;
+  border-top: solid 5px #000000;
+}
+
+header .headline {
+  font-size: 32px;
+}
+
+nav {
+  width: 880px;
+  margin: 0 auto;  /*上下余白なし、左右に同じ幅*/
+  border-top: solid 0.7px #000000;
+  border-bottom: solid 0.7px #000000;
+}
+
+.nav-list {
+  text-align: center;
+  padding: 10px 0;
+  margin: 0 auto;
+}
+
+.nav-list-item {
+  list-style: none;
+  display: inline-block; /*横並び*/
+  margin: 0 20px;
+}
+
+main {
+  width: 880px;
+  margin: 0 auto;
+}
+
+.list-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.list-box {
+  width: 200px;
+  height: 250px;
+  margin: 10px;
+  position: relative; /*.list-commentの position: absolute;とセットで使用*/
+  }
+
+.list-comment {
+  width: 200px;
+  position: absolute; /*親要素を基準に、絶対配置を指定*/
+  left: 0;
+  bottom: 0;
+}
+
+.list-body {
+  display: block; /*横並び解除*/
+  color: gray;
+  font-size: 12px;
+  overflow: hidden; /*要素のボックスからはみ出てしまった部分は隠れて見えなくする*/
+  white-space: nowrap; /*テキストを折り返し表示させないようにするプロパティ*/
+  text-overflow: ellipsis; /*領域をはみ出したテキストを三点リーダー（...）で省略表示するプロパティ*/
+}
+
+.list-title {
+  display: block;
+  font-size: 18px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/*フラッシュメッセージの色を変える*/
+
+.flash-message {
+  border-radius: 5px;
+  padding: 16px 24px;
+  margin: 16px 0px;
+}
+
+.flash-message.notice { /*投稿に成功した場合(flash[:notice])は文字を青く*/
+  background-color: #bcdfff;
+  color: #0067C0;
+  border: solid 1px #0067C0;
+}
+
+.flash-message.alert { /*投稿に失敗した場合(flash[:alert])は文字を赤く*/
+  background-color: #ffd4d1;
+  color: #930403;
+  border: solid 1px #930403;
+}
